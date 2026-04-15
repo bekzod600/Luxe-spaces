@@ -38,7 +38,7 @@ export function ApartmentModel({ url, wireframe }) {
       const mats = Array.isArray(child.material) ? child.material : [child.material]
       mats.forEach(mat => {
         if (mat.isMeshStandardMaterial || mat.isMeshPhysicalMaterial) {
-          mat.envMapIntensity = 1.0
+          mat.envMapIntensity = 0.4
           mat.needsUpdate = true
         }
       })

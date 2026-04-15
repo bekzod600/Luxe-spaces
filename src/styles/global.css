@@ -388,44 +388,127 @@ html, body {
 }
 .hint-icon { font-size: 0.95rem; }
 
-/* ─── WALK MODE OVERLAY ────────────────────────────────────── */
+/* ─── WALK MODE OVERLAY ───────────────────────────────────── */
 .walk-overlay {
   position: fixed; inset: 0; z-index: 50;
   pointer-events: none;
 }
-.walk-overlay__badge {
-  position: absolute; top: 80px; left: 50%;
-  transform: translateX(-50%);
+
+/* Crosshair */
+.walk-crosshair {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.9;
+  filter: drop-shadow(0 0 6px rgba(201,169,110,0.4));
+}
+
+/* Top-left badge */
+.walk-badge {
+  position: absolute; top: 76px; left: 28px;
+  display: flex; align-items: center; gap: 8px;
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 40px;
-  padding: 8px 24px;
-  font-size: 0.75rem;
+  padding: 7px 16px;
+  backdrop-filter: blur(12px);
+  animation: fadeIn 0.4s ease;
+}
+.walk-badge__dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px var(--gold);
+  animation: pulse 2s ease-in-out infinite;
+}
+.walk-badge__text {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
   color: var(--text-2);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+/* Controls hint (bottom center) */
+.walk-hint {
+  position: absolute; bottom: 90px; left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.walk-hint--hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(10px);
+}
+.walk-hint__inner {
+  display: flex; align-items: center; gap: 24px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 28px;
+  backdrop-filter: blur(16px);
+}
+.walk-hint__group {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.walk-hint__keys {
+  display: flex; gap: 4px;
+}
+.walk-hint__label {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-2);
+}
+.walk-hint__sep {
+  width: 1px; height: 40px;
+  background: var(--border);
+}
+kbd {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(201,169,110,0.25);
+  border-bottom: 2px solid rgba(201,169,110,0.4);
+  border-radius: 5px;
+  font-size: 0.7rem;
+  font-family: var(--font-sans);
+  color: var(--gold);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.walk-hint__key--wide {
+  width: auto;
+  padding: 0 10px;
+}
+
+/* Exit button */
+.walk-exit-btn {
+  position: absolute;
+  top: 76px; right: 28px;
+  display: flex; align-items: center; gap: 8px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text-2);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: var(--radius);
+  cursor: pointer;
   backdrop-filter: blur(12px);
+  transition: var(--transition);
+  pointer-events: all;
 }
-.walk-overlay__crosshair {
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 20px; height: 20px;
-  pointer-events: none;
-}
-.walk-overlay__crosshair::before,
-.walk-overlay__crosshair::after {
-  content: '';
-  position: absolute;
-  background: rgba(201,169,110,0.6);
-  border-radius: 1px;
-}
-.walk-overlay__crosshair::before {
-  width: 1px; height: 100%;
-  left: 50%; transform: translateX(-50%);
-}
-.walk-overlay__crosshair::after {
-  height: 1px; width: 100%;
-  top: 50%; transform: translateY(-50%);
+.walk-exit-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201,169,110,0.06);
 }
 
 /* ─── SCROLLBAR ────────────────────────────────────────────── */

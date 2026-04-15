@@ -34,10 +34,10 @@ export default function Scene({ modelUrl }) {
       <ModelProgressTracker />
 
       {/* Lights */}
-      <ambientLight intensity={0.4} color="#ffeedd" />
+      <ambientLight intensity={0.25} color="#ffeedd" />
       <directionalLight
         position={[8, 14, 6]}
-        intensity={2.2}
+        intensity={1.2}
         color="#fff5e8"
         castShadow
         shadow-mapSize={[2048, 2048]}
@@ -47,10 +47,10 @@ export default function Scene({ modelUrl }) {
         shadow-camera-bottom={-15}
         shadow-bias={-0.001}
       />
-      <directionalLight position={[-6, 8, -5]} intensity={0.7} color="#c8d8f0" />
-      <hemisphereLight skyColor="#fff0d0" groundColor="#222233" intensity={0.5} />
-      <pointLight position={[2, 3, 1]} intensity={1.5} color="#ffcc88" distance={8} />
-      <pointLight position={[-3, 3, -2]} intensity={1.2} color="#ffcc88" distance={6} />
+      <directionalLight position={[-6, 8, -5]} intensity={0.35} color="#c8d8f0" />
+      <hemisphereLight skyColor="#fff0d0" groundColor="#111122" intensity={0.3} />
+      <pointLight position={[2, 3, 1]} intensity={0.8} color="#ffcc88" distance={8} />
+      <pointLight position={[-3, 3, -2]} intensity={0.6} color="#ffcc88" distance={6} />
 
       {/* Environment (HDR muqobil) */}
       <Environment preset="apartment" background={false} />
